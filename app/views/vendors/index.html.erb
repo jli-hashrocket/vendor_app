@@ -1,0 +1,12 @@
+<h1>Vendors</h1>
+<%= link_to 'New Vendor', new_vendor_url %>
+<table cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% @vendors.each do |vendor| %>
+  <tr>
+    <td><%= link_to vendor.name, vendor_url(vendor.id) %></td>
+  </tr>
+  <% end %>
+</table>
