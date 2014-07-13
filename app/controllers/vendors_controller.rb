@@ -29,18 +29,20 @@ class VendorsController < ApplicationController
 
   def update
      @vendor = Vender.find(params[:id])
-     if @vendor.update(vendor_params)
-        format.html { redirect_to @vendor, notice: 'Vendor was saved successfully' }
-        format.json { render action: 'show', status: :created, location: @vendor }
-      else
-        render action: 'edit'
+     respond_to do |format|
+       if @vendor.update(vendor_params)
+          format.html { redirect_to @vendor, notice: "Vendor was saved successfully" }
+          format.json { render action: 'show', status: :created, location: @vendor }
+        else
+          render action: 'edit'
+        end
       end
   end
 
   def destroy
     @vendor = Vendor.find(params[:id])
     if @vendor.destroy
-      redirect_to vendors_url, notice: 'Vendor was successfully deleted'
+      redirect_to vendors_url, notice: "Vendor was successfully deleted"
     end
   end
 
@@ -56,7 +58,9 @@ class VendorsController < ApplicationController
     session[:token] = at.token
     session[:secret] = at.secret
     session[:realm_id] = params['realmId']
-    redirect_to vendors_url, notice: 'Your Quickbooks account has been linked.'
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: "Your Quickbooks account has been linked." }
+    end
   end
 
   private
