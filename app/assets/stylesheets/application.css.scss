@@ -14,3 +14,16 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#container {
+  width: 1000px;
+  margin: auto;
+
+  .connect-intuit {
+    margin-top: 20px;
+  }
+
+  table {
+    margin-top: 30px;
+  }
+}

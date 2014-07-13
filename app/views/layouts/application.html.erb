@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="container">
+  <div class="connect-intuit">
+  <% if !session[:token] %>
+    <ipp:connectToIntuit></ipp:connectToIntuit>
+  <% end %>
+  </div>
+  <p class="notice"><%= notice %></p>
+  <%= yield %>
+</div>
+<script type="text/javascript" src="https://appcenter.intuit.com/Content/IA/intuit.ipp.anywhere.js"></script>
 
-<%= yield %>
+<script>
+    intuit.ipp.anywhere.setup({menuProxy: '/path/to/blue-dot', grantUrl: '<%= authenticate_vendors_url %>'});
+</script>
 
 </body>
 </html>

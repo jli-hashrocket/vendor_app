@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 1.2'
 # Use Quickbooks integration gem. REST API V3
 gem 'quickbooks-ruby'
 
+gem 'oauth-plugin'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
