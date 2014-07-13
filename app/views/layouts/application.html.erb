@@ -8,12 +8,12 @@
 </head>
 <body>
 <div id="container">
-  <div class="connect-intuit">
-  <% if !session[:token] %>
+  <% unless session[:token] %>
     <ipp:connectToIntuit></ipp:connectToIntuit>
   <% end %>
-  </div>
-  <p class="notice"><%= notice %></p>
+  <% if notice %>
+    <div style="padding: 10px;background: gainsboro;font-weight: 900;width: 50%;"><%= notice %></div>
+  <% end %>
   <%= yield %>
 </div>
 <script type="text/javascript" src="https://appcenter.intuit.com/Content/IA/intuit.ipp.anywhere.js"></script>
