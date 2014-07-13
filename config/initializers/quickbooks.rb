@@ -1,4 +1,4 @@
-QB_KEY = "df3f8ad2b154fb4773b90eab1da9ea4df487"
+QB_KEY = "qyprdtt9gHYmJY12PGVysFoNCRNnk2"
 QB_SECRET = "jRcCcIjSsgFOoowGhOHL72Hpvn7RSXWR26TzqXfG"
 
 $qb_oauth_consumer = OAuth::Consumer.new(QB_KEY, QB_SECRET, {
