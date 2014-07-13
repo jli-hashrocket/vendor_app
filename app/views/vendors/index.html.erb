@@ -3,10 +3,13 @@
 <table cellpadding="0" cellspacing="0" border="0">
   <tr>
     <th>Name</th>
+    <th>Email</th>
   </tr>
   <% @vendors.each do |vendor| %>
   <tr>
-    <td><%= link_to vendor.name, vendor_url(vendor.id) %></td>
+    <td><%= link_to vendor.name, vendor %></td>
+    <td><%= vendor.email %></td>
+    <td><%= link_to 'Edit', edit_vendor_path(vendor) %> | <%= link_to 'Destroy', vendor, method: :delete %></td>
   </tr>
   <% end %>
 </table>

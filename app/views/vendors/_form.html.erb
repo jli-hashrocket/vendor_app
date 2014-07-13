@@ -1,6 +1,7 @@
 <%= simple_form_for(@vendor) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :name, size: 50 %>
+  <%= f.input :name, size: 50, input_html: { maxlength: 50 } %>
+  <%= f.input :email, size: 50, input_html: { maxlength: 50 } %>
   <%= f.button :submit %>
 <% end %>
