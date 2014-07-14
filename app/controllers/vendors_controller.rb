@@ -1,5 +1,6 @@
 class VendorsController < ApplicationController
   before_action :set_qb_service, only: [:create, :edit, :update, :destroy]
+
   def index
     @vendors = Vendor.all
   end
@@ -28,6 +29,7 @@ class VendorsController < ApplicationController
         format.json { render json: @vendor.errors, status: :unprocessable_entity}
       end
     end
+
   end
 
   def edit
@@ -35,15 +37,15 @@ class VendorsController < ApplicationController
   end
 
   def update
-     @vendor = Vender.find(params[:id])
-     respond_to do |format|
-       if @vendor.update(vendor_params)
-          format.html { redirect_to @vendor, notice: "Vendor was saved successfully" }
-          format.json { render action: 'show', status: :created, location: @vendor }
-        else
-          render action: 'edit'
-        end
+    @vendor = Vender.find(params[:id])
+    respond_to do |format|
+      if @vendor.update(vendor_params)
+        format.html { redirect_to @vendor, notice: "Vendor was saved successfully" }
+        format.json { render action: 'show', status: :created, location: @vendor }
+      else
+        render action: 'edit'
       end
+    end
   end
 
   def destroy
@@ -61,13 +63,11 @@ class VendorsController < ApplicationController
   end
 
   def oauth_callback
-    at = session[:qb_request_token].get_access_token(oauth_verifier: params[:oauth_verifier])
+    at = session[:qb_request_token].get_access_token(:oauth_verifier => params[:oauth_verifier])
     session[:token] = at.token
     session[:secret] = at.secret
     session[:realm_id] = params['realmId']
-    respond_to do |format|
-      format.html { redirect_to root_url, notice: "Your Quickbooks account has been linked." }
-    end
+    redirect_to root_url, notice: "Your QuickBooks account has been successfully linked."
   end
 
   private
